@@ -1,6 +1,6 @@
 # Celeste ⌨️
 
-This is my Keychron Q8 keyboard. It is first mechanical keyboard (custom one) ANSI keyboard.
+This is my Keychron Q8 keyboard. It is first mechanical keyboard (custom one) ANSI keyboard. This branch holds the official keychron firmware with via support.
 
 ## Keycaps
 
