@@ -1,6 +1,6 @@
 # Celeste ⌨️
 
-This is my Keychron Q8 keyboard. It is first mechanical keyboard (custom one) ANSI keyboard.
+This is my Keychron Q8 keyboard. It is first mechanical keyboard (custom one) ANSI keyboard. This is my take on the firmware with _vial_ support. Since my main machine is Windows system I am not planning to use MAC switches at all.
 
 ## Keycaps
 
