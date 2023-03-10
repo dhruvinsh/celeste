@@ -1,42 +1,45 @@
 name: Build QMK firmware
-on: [push, workflow_dispatch]
+run-name: Running build by ${{ github.actor }}
+on:
+  push:
+    branches:
+      - main
+
+env:
+  firmware_file: vial-qmk/.build
 
 jobs:
   build:
     runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
-    strategy:
-      fail-fast: false
-      matrix:
-        file:
-          - keymap.json
 
     steps:
       - name: Disable git safe directory checks
         run: git config --global --add safe.directory '*'
 
-      - name: Checkout QMK
+      - name: Checkout QMK-Vial
         uses: actions/checkout@v3
         with:
           repository: vial-kb/vial-qmk
           submodules: recursive
-          path: users/vial-qmk
+          path: vial-qmk
 
-      - name: Checkout userspace
+      - name: Checkout Celeste
         uses: actions/checkout@v3
         with:
-          path: users/vial-qmk/keyboards/
+          path: vial-qmk/keyboards/
 
       - name: Build firmware
         run: |
-          qmk setup -H users/vial-qmk -y
+          qmk setup -H vial-qmk -y
           qmk compile -kb celeste -km vial
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
         continue-on-error: true
         with:
-          name: ${{ matrix.file }}_${{ github.actor }}
+          name: celeste_vial.bin
+          path: ${{ env.firmware_file }}
           path: |
             *.hex
             *.bin
