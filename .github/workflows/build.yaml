@@ -28,7 +28,9 @@ jobs:
           path: users/vial-qmk/keyboards/
 
       - name: Build firmware
-        run: qmk compile -kb celeste -km vial
+        run: |
+          qmk setup -H users/vial-qmk -y
+          qmk compile -kb celeste -km vial
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
