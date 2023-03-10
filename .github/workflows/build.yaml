@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  firmware_file: vial-qmk/.build/celeste_vial.bin
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +39,4 @@ jobs:
         continue-on-error: true
         with:
           name: celeste_vial.bin
-          path: |
-            *.hex
-            *.bin
-            *.uf2
+          path: ${{ env.firmware_file }}
