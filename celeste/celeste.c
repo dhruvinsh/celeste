@@ -88,7 +88,7 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
 
 // clang-format off
 
-const ckled2001_led PROGMEM g_ckled2001_leds[DRIVER_LED_TOTAL] = {
+const ckled2001_led PROGMEM g_ckled2001_leds[RGB_MATRIX_LED_COUNT] = {
 /* Refer to CKLED manual for these locations
  *   driver
  *   |  R location
