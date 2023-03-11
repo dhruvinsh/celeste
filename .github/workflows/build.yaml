@@ -7,7 +7,7 @@ on:
       - dev
 
 env:
-  firmware_file: vial-qmk/.build/celeste_vial.bin
+  firmware_file: qmk_firmware/.build/celeste_default.bin
 
 jobs:
   build:
@@ -18,26 +18,26 @@ jobs:
       - name: Disable git safe directory checks
         run: git config --global --add safe.directory '*'
 
-      - name: Checkout QMK-Vial
+      - name: Checkout QMK
         uses: actions/checkout@v3
         with:
-          repository: vial-kb/vial-qmk
+          repository: qmk/qmk_firmware
           submodules: recursive
-          path: vial-qmk
+          path: qmk_firmware
 
       - name: Checkout Celeste
         uses: actions/checkout@v3
         with:
-          path: vial-qmk/keyboards/
+          path: qmk_firmware/keyboards/
 
       - name: Build firmware
         run: |
-          qmk setup -H vial-qmk -y
-          qmk compile -kb celeste -km vial
+          qmk setup -H qmk_firmware -y
+          qmk compile -kb celeste -km default
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
         continue-on-error: true
         with:
-          name: celeste_vial.bin
+          name: celeste_default.bin
           path: ${{ env.firmware_file }}
