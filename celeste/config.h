@@ -19,10 +19,6 @@
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION ROW2COL
 
-/* Key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 15
-
 /* Key matrix pins */
 #define MATRIX_ROW_PINS \
     { B4, B3, A15, A14, A13 }
@@ -31,9 +27,6 @@
 
 /* If PH3 used with a stronger pull resistor then the following definition needs be included */
 // #define MATRIX_UNSELECT_DRIVE_HIGH
-
-/* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 5
 
 /* RGB Matrix Driver Configuration */
 #define DRIVER_COUNT 2
@@ -122,12 +115,9 @@
 /* RGB Matrix Configuration */
 #define DRIVER_1_LED_TOTAL 35
 #define DRIVER_2_LED_TOTAL 34
-#define DRIVER_LED_TOTAL (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)
+#define RGB_MATRIX_LED_COUNT (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)
 
 /* Encoder Configuration */
-#define ENCODERS_PAD_A { B5 }
-#define ENCODERS_PAD_B { A10 }
-#define ENCODER_RESOLUTION 4
 #define ENCODER_DEFAULT_POS 0x3
 
 /* Enable caps-lock LED */
