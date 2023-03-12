@@ -1,18 +1,20 @@
 name: Build QMK firmware
-run-name: Running build by ${{ github.actor }}
 on:
   push:
     branches:
       - main
       - dev
 
-env:
-  firmware_file: qmk_firmware/.build/celeste_default.bin
-
 jobs:
   build:
     runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
+
+    strategy:
+      matrix:
+        keymaps:
+          - default
+          - colemakdh
 
     steps:
       - name: Disable git safe directory checks
@@ -33,11 +35,11 @@ jobs:
       - name: Build firmware
         run: |
           qmk setup -H qmk_firmware -y
-          qmk compile -kb celeste -km default
+          qmk compile -kb celeste -km ${{ matrix.keymaps }}
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
         continue-on-error: true
         with:
-          name: celeste_default.bin
-          path: ${{ env.firmware_file }}
+          name: celeste
+          path: qmk_firmware/.build/celeste_*.bin
