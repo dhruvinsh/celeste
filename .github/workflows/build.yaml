@@ -32,6 +32,9 @@ jobs:
         with:
           path: qmk_firmware/keyboards/
 
+      - name: Install dependencies
+        run: pip3 install -r requirements.txt
+
       - name: Build firmware
         run: |
           qmk setup -H qmk_firmware -y
