@@ -50,7 +50,7 @@ uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this
 
 const uint16_t PROGMEM wf_combo[] = {KC_W, KC_F, COMBO_END};
 
-combo_t key_combos[COMBO_LEN] = {
+combo_t key_combos[] = {
   [WF_ESC] = COMBO(wf_combo, KC_ESC),
 };
 
