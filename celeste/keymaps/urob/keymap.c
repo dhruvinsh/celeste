@@ -31,19 +31,19 @@ enum layers{
 
 enum combos {
   WF_ESC,
-  FP_ENTER,
-  RS_TAB,
-  ST_REPEAT,
-  XC_COPY,
-  CD_PASTE,
-  WR_AT,
-  FS_HASH,
-  PT_DOLLAR,
-  BG_PERCENT,
-  RX_GRAVE,
-  SC_SLASH,
-  TD_EQUAL,
-  GV_DASH,
+  /* FP_ENTER, */
+  /* RS_TAB, */
+  /* ST_REPEAT, */
+  /* XC_COPY, */
+  /* CD_PASTE, */
+  /* WR_AT, */
+  /* FS_HASH, */
+  /* PT_DOLLAR, */
+  /* BG_PERCENT, */
+  /* RX_GRAVE, */
+  /* SC_SLASH, */
+  /* TD_EQUAL, */
+  /* GV_DASH, */
   COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
