@@ -15,6 +15,7 @@ jobs:
         keymaps:
           - default
           - colemakdh
+          - urob
 
     steps:
       - name: Disable git safe directory checks
