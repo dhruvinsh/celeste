@@ -30,7 +30,7 @@ enum combos {
   RX_GRAVE,
   SC_SLASH,
   TD_EQUAL,
-  GV_MINUS,
+  GV_TIDLE,
   COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -64,7 +64,7 @@ combo_t key_combos[] = {
   [RX_GRAVE]   = COMBO(rx_combo, KC_GRV),
   [SC_SLASH]   = COMBO(sc_combo, KC_SLASH),
   [TD_EQUAL]   = COMBO(td_combo, KC_EQL),
-  [GV_MINUS]    = COMBO(gv_combo, KC_MINUS),
+  [GV_TIDLE]   = COMBO(gv_combo, KC_TILD),
 };
 
 
