@@ -13,15 +13,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+// clang-format off
 
 #include "stdint.h"
 #include QMK_KEYBOARD_H
 
-// clang-format off
-//
 // Keychron has switch and official firmware supports switching between mac and win OS.
 // But with this keymap it will be possible to switch between colemak and qwerty
-
 enum layers{
     C_BASE, // Colemak-DH (formely know as Colemak-DHm) base, switch it to mac in order to access
     Q_BASE, // querty base
@@ -29,29 +27,59 @@ enum layers{
     C_FN2,  // common function 2
 };
 
+// some key combination used for combos
+#define KC_COPY LCTL(KC_C)
+#define KC_PASTE LCTL(KC_V)
+
 enum combos {
   WF_ESC,
-  /* FP_ENTER, */
-  /* RS_TAB, */
-  /* ST_REPEAT, */
-  /* XC_COPY, */
-  /* CD_PASTE, */
-  /* WR_AT, */
-  /* FS_HASH, */
-  /* PT_DOLLAR, */
-  /* BG_PERCENT, */
-  /* RX_GRAVE, */
-  /* SC_SLASH, */
-  /* TD_EQUAL, */
-  /* GV_DASH, */
+  FP_ENTER,
+  RS_TAB,
+  ST_REPEAT,
+  XC_COPY,
+  CD_PASTE,
+  WR_AT,
+  FS_HASH,
+  PT_DOLLAR,
+  BG_PERCENT,
+  RX_GRAVE,
+  SC_SLASH,
+  TD_EQUAL,
+  GV_MINUS,
   COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM wf_combo[] = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM fp_combo[] = {KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM rs_combo[] = {KC_R, KC_S, COMBO_END};
+const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END};
+const uint16_t PROGMEM wr_combo[] = {KC_W, KC_R, COMBO_END};
+const uint16_t PROGMEM fs_combo[] = {KC_F, KC_S, COMBO_END};
+const uint16_t PROGMEM pt_combo[] = {KC_P, KC_T, COMBO_END};
+const uint16_t PROGMEM bg_combo[] = {KC_B, KC_G, COMBO_END};
+const uint16_t PROGMEM rx_combo[] = {KC_R, KC_X, COMBO_END};
+const uint16_t PROGMEM sc_combo[] = {KC_S, KC_C, COMBO_END};
+const uint16_t PROGMEM td_combo[] = {KC_T, KC_D, COMBO_END};
+const uint16_t PROGMEM gv_combo[] = {KC_G, KC_V, COMBO_END};
 
 combo_t key_combos[] = {
-  [WF_ESC] = COMBO(wf_combo, KC_ESC),
+  [WF_ESC]     = COMBO(wf_combo, KC_ESC),
+  [FP_ENTER]   = COMBO(fp_combo, KC_ENT),
+  [RS_TAB]     = COMBO(rs_combo, KC_TAB),
+  [ST_REPEAT]  = COMBO(st_combo, KC_ESC),
+  [XC_COPY]    = COMBO(xc_combo, KC_COPY),
+  [CD_PASTE]   = COMBO(cd_combo, KC_PASTE),
+  [WR_AT]      = COMBO(wr_combo, KC_AT),
+  [FS_HASH]    = COMBO(fs_combo, KC_HASH),
+  [PT_DOLLAR]  = COMBO(pt_combo, KC_DOLLAR),
+  [BG_PERCENT] = COMBO(bg_combo, KC_PERCENT),
+  [RX_GRAVE]   = COMBO(rx_combo, KC_GRV),
+  [SC_SLASH]   = COMBO(sc_combo, KC_SLASH),
+  [TD_EQUAL]   = COMBO(td_combo, KC_EQL),
+  [GV_MINUS]    = COMBO(gv_combo, KC_MINUS),
 };
 
 
