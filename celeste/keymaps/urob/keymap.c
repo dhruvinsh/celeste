@@ -17,6 +17,7 @@ enum layers{
 #define KC_PASTE LCTL(KC_V)
 
 enum combos {
+  // left side
   WF_ESC,
   FP_ENTER,
   RS_TAB,
@@ -31,6 +32,7 @@ enum combos {
   SC_SLASH,
   TD_EQUAL,
   GV_TIDLE,
+  // right side
   LU_BSPC,
   UY_DELETE,
   NE_BRACKETS, // on tap ( -- on hold <
@@ -50,6 +52,7 @@ enum combos {
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
+// left side
 const uint16_t PROGMEM wf_combo[] = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM fp_combo[] = {KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM rs_combo[] = {KC_R, KC_S, COMBO_END};
@@ -65,6 +68,7 @@ const uint16_t PROGMEM sc_combo[] = {KC_S, KC_C, COMBO_END};
 const uint16_t PROGMEM td_combo[] = {KC_T, KC_D, COMBO_END};
 const uint16_t PROGMEM gv_combo[] = {KC_G, KC_V, COMBO_END};
 
+// right side
 const uint16_t PROGMEM lu_combo[] = {KC_L,    KC_U,    COMBO_END};
 const uint16_t PROGMEM uy_combo[] = {KC_U,    KC_Y,    COMBO_END};
 const uint16_t PROGMEM ne_combo[] = {KC_N,    KC_E,    COMBO_END};
@@ -81,12 +85,13 @@ const uint16_t PROGMEM eC_combo[] = {KC_E,    KC_COMM, COMBO_END};
 const uint16_t PROGMEM iD_combo[] = {KC_I,    KC_DOT,  COMBO_END};
 
 combo_t key_combos[] = {
+  // left side
   [WF_ESC]     = COMBO(wf_combo, KC_ESC),
   [FP_ENTER]   = COMBO(fp_combo, KC_ENT),
   [RS_TAB]     = COMBO(rs_combo, KC_TAB),
   [ST_REPEAT]  = COMBO(st_combo, KC_ESC),
-  [XC_COPY]    = COMBO(xc_combo, KC_COPY),
-  [CD_PASTE]   = COMBO(cd_combo, KC_PASTE),
+  [XC_COPY]    = COMBO(xc_combo, KC_COPY),  // TODO: need to find a way to make universal copy paste
+  [CD_PASTE]   = COMBO(cd_combo, KC_PASTE), // TODO: need to find a way to make universal copy paste
   [WR_AT]      = COMBO(wr_combo, KC_AT),
   [FS_HASH]    = COMBO(fs_combo, KC_HASH),
   [PT_DOLLAR]  = COMBO(pt_combo, KC_DOLLAR),
@@ -95,12 +100,14 @@ combo_t key_combos[] = {
   [SC_SLASH]   = COMBO(sc_combo, KC_SLASH),
   [TD_EQUAL]   = COMBO(td_combo, KC_EQL),
   [GV_TIDLE]   = COMBO(gv_combo, KC_TILD),
+
+  // right side
   [LU_BSPC]       = COMBO(lu_combo, KC_BSPC),
   [UY_DELETE]     = COMBO(uy_combo, KC_DEL),
-  [NE_BRACKETS]   = COMBO(ne_combo, KC_LPRN),
-  [EI_BRACKETS]   = COMBO(ei_combo, KC_RPRN),
-  [HC_BRACKETS]   = COMBO(hC_combo, KC_LBRC),
-  [CD_BRACKETS]   = COMBO(CD_combo, KC_RBRC),
+  [NE_BRACKETS]   = COMBO(ne_combo, KC_LPRN), // TODO: on tap ( on hold <
+  [EI_BRACKETS]   = COMBO(ei_combo, KC_RPRN), // TODO: on tap ) on hold >
+  [HC_BRACKETS]   = COMBO(hC_combo, KC_LBRC), // TODO: on tap [ on hold {
+  [CD_BRACKETS]   = COMBO(CD_combo, KC_RBRC), // TODO: on tap ] on hold }
   [JM_CARET]      = COMBO(jm_combo, KC_CIRC),
   [LN_PLUS]       = COMBO(ln_combo, KC_PLUS),
   [UE_ASTERISK]   = COMBO(ue_combo, KC_ASTR),
