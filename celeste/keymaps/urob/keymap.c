@@ -120,34 +120,39 @@ combo_t key_combos[] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+
     case LT(0, KC_LPRN):
-      if (!record->tap.count && record->event.pressed) {
+      if (record->tap.count && record->event.pressed) {
+        tap_code16(KC_LPRN); // Intercept tap function to send (
+      } else {
         tap_code16(KC_LT); // Intercept hold function to send <
-        return false;
-      }
-      return true;
-    }
+      };
+      return false;
+
     case LT(0, KC_RPRN):
-      if (!record->tap.count && record->event.pressed) {
+      if (record->tap.count && record->event.pressed) {
+        tap_code16(KC_RPRN); // Intercept tap function to send )
+      } else {
         tap_code16(KC_GT); // Intercept hold function to send >
-        return false;
       }
-      return true;
-    }
+      return false;
+
     case LT(0, KC_LBRC):
-      if (!record->tap.count && record->event.pressed) {
+      if (record->tap.count && record->event.pressed) {
+        tap_code16(KC_LBRC); // Intercept tap function to send [
+      } else {
         tap_code16(KC_LCBR); // Intercept hold function to send {
-        return false;
       }
-      return true;
-    }
+      return false;
+
     case LT(0, KC_RBRC):
-      if (!record->tap.count && record->event.pressed) {
+      if (record->tap.count && record->event.pressed) {
+        tap_code16(KC_RBRC); // Intercept tap function to send ]
+      } else {
         tap_code16(KC_RCBR); // Intercept hold function to send }
-        return false;
       }
-      return true;
-    }
+      return false;
+  }
   return true;
 }
 
