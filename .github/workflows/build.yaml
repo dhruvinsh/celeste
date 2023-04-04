@@ -14,7 +14,6 @@ jobs:
       matrix:
         keymaps:
           - default
-          - colemakdh
           - urob
 
     steps:
