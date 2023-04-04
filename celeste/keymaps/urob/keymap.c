@@ -163,11 +163,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [C_BASE] = LAYOUT_ansi_69(
-        KC_NO,   KC_NO,    KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,          KC_MUTE,
-        KC_NO,   KC_Q,     KC_W,     KC_F,    KC_P,    KC_B,    KC_J,     KC_L,    KC_U,    KC_Y,    KC_SCLN,  KC_NO,    KC_NO,    KC_NO,          KC_NO,
-        KC_NO,   KC_A,     KC_R,     KC_S,    KC_T,    KC_G,              KC_M,    KC_N,    KC_E,    KC_I,     KC_O,     KC_NO,    KC_NO,          KC_NO,
-        KC_NO,   KC_Z,     KC_X,     KC_C,    KC_D,    KC_V,    KC_NO,    KC_K,    KC_H,    KC_COMM,  KC_DOT,   KC_SLSH, KC_NO,    KC_UP,
-        KC_NO,   KC_NO,    KC_NO,           KC_SPC,    MO(C_FN1),         MO(C_FN2),         KC_SPC,           KC_NO,    KC_NO,    KC_NO,    KC_NO
+        KC_NO,   KC_NO,        KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,    KC_NO,   KC_NO,        KC_NO,        KC_NO,        KC_NO,        KC_NO,    KC_NO,   KC_MUTE,
+        KC_NO,   KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,    KC_J,     KC_L,    KC_U,         KC_Y,         KC_SCLN,      KC_NO,        KC_NO,    KC_NO,   KC_NO,
+        KC_NO,   LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,              KC_M,    LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I), LGUI_T(KC_O), KC_NO,    KC_NO,   KC_NO,
+        KC_NO,   KC_Z,         KC_X,         KC_C,         KC_D,         KC_V,    KC_NO,    KC_K,    KC_H,         KC_COMM,      KC_DOT,       KC_SLSH,      KC_NO,    KC_NO,
+        KC_NO,   KC_NO,        KC_NO,                     KC_SPC,        MO(C_FN1),         MO(C_FN2),             KC_SPC,           KC_NO,                  KC_NO,    KC_NO,    KC_NO
     ),
 
     [Q_BASE] = LAYOUT_ansi_69(
