@@ -104,10 +104,10 @@ combo_t key_combos[] = {
   // right side
   [LU_BSPC]       = COMBO(lu_combo, KC_BSPC),
   [UY_DELETE]     = COMBO(uy_combo, KC_DEL),
-  [NE_BRACKETS]   = COMBO(ne_combo, KC_LPRN), // TODO: on tap ( on hold <
-  [EI_BRACKETS]   = COMBO(ei_combo, KC_RPRN), // TODO: on tap ) on hold >
-  [HC_BRACKETS]   = COMBO(hC_combo, KC_LBRC), // TODO: on tap [ on hold {
-  [CD_BRACKETS]   = COMBO(CD_combo, KC_RBRC), // TODO: on tap ] on hold }
+  [NE_BRACKETS]   = COMBO(ne_combo, LT(0, KC_LPRN)), // on tap ( on hold <
+  [EI_BRACKETS]   = COMBO(ei_combo, LT(0, KC_RPRN)), // on tap ) on hold >
+  [HC_BRACKETS]   = COMBO(hC_combo, LT(0, KC_LBRC)), // on tap [ on hold {
+  [CD_BRACKETS]   = COMBO(CD_combo, LT(0, KC_RBRC)), // on tap ] on hold }
   [JM_CARET]      = COMBO(jm_combo, KC_CIRC),
   [LN_PLUS]       = COMBO(ln_combo, KC_PLUS),
   [UE_ASTERISK]   = COMBO(ue_combo, KC_ASTR),
@@ -117,6 +117,39 @@ combo_t key_combos[] = {
   [EC_SLASH]      = COMBO(eC_combo, KC_SLASH),
   [ID_PIPE]       = COMBO(iD_combo, KC_PIPE),
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case LT(0, KC_LPRN):
+      if (!record->tap.count && record->event.pressed) {
+        tap_code16(KC_LT); // Intercept hold function to send <
+        return false;
+      }
+      return true;
+    }
+    case LT(0, KC_RPRN):
+      if (!record->tap.count && record->event.pressed) {
+        tap_code16(KC_GT); // Intercept hold function to send >
+        return false;
+      }
+      return true;
+    }
+    case LT(0, KC_LBRC):
+      if (!record->tap.count && record->event.pressed) {
+        tap_code16(KC_LCBR); // Intercept hold function to send {
+        return false;
+      }
+      return true;
+    }
+    case LT(0, KC_RBRC):
+      if (!record->tap.count && record->event.pressed) {
+        tap_code16(KC_RCBR); // Intercept hold function to send }
+        return false;
+      }
+      return true;
+    }
+  return true;
+}
 
 
 // some custom key-combo
