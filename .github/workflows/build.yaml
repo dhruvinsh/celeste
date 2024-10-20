@@ -1,45 +1,25 @@
 name: Build QMK firmware
+
 on:
   push:
     branches:
       - main
       - dev
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container: qmkfm/qmk_cli
+    name: 'QMK Userspace Build'
+    uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
+    with:
+      qmk_repo: qmk/qmk_firmware
+      qmk_ref: master
 
-    strategy:
-      matrix:
-        keymaps:
-          - default
-          - urob
-
-    steps:
-      - name: Disable git safe directory checks
-        run: git config --global --add safe.directory '*'
-
-      - name: Checkout QMK
-        uses: actions/checkout@v3
-        with:
-          repository: qmk/qmk_firmware
-          submodules: recursive
-          path: qmk_firmware
-
-      - name: Checkout Celeste
-        uses: actions/checkout@v3
-        with:
-          path: qmk_firmware/keyboards/
-
-      - name: Build firmware
-        run: |
-          qmk setup -H qmk_firmware -y
-          qmk compile -kb celeste -km ${{ matrix.keymaps }}
-
-      - name: Archive firmware
-        uses: actions/upload-artifact@v3
-        continue-on-error: true
-        with:
-          name: celeste
-          path: qmk_firmware/.build/celeste_*.bin
+  publish:
+    name: 'QMK Userspace Publish'
+    uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
+    if: always() && !cancelled()
+    needs: build
